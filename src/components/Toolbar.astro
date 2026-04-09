@@ -1,0 +1,31 @@
+---
+const navItems = [
+  { name: 'Home', href: '/' },
+  { name: 'Projects', href: '/projects' },
+  { name: 'Contact', href: '/contact' },
+];
+---
+
+<nav class="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-xl">
+  <div class="glass-effect rounded-2xl px-6 py-3 flex items-center justify-between shadow-bento border border-white/20 dark:border-neutral-800/50">
+    <a href="/" class="text-lg font-black tracking-tighter hover:text-brand-primary transition-colors">
+      MAX C<span class="text-brand-primary">.</span>
+    </a>
+    
+    <div class="flex items-center gap-6">
+      {navItems.map(item => (
+        <a 
+          href={item.href} 
+          class="text-sm font-bold text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white transition-colors uppercase tracking-widest"
+        >
+          {item.name}
+        </a>
+      ))}
+    </div>
+
+    <div class="flex items-center gap-2 pl-4 border-l border-neutral-200 dark:border-neutral-800">
+      <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+      <span class="text-[10px] font-bold text-neutral-400 uppercase tracking-tighter">Live</span>
+    </div>
+  </div>
+</nav>

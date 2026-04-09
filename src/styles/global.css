@@ -1,0 +1,28 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --color-brand-primary: #007aff;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  
+  --shadow-bento: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+  --shadow-bento-hover: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+@layer base {
+  body {
+    @apply bg-neutral-50 text-neutral-900 antialiased font-sans transition-colors duration-300;
+    @apply dark:bg-neutral-950 dark:text-neutral-100;
+  }
+}
+
+@layer components {
+  .bento-grid {
+    @apply grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-4 auto-rows-[180px];
+  }
+
+  .bento-card {
+    @apply relative overflow-hidden rounded-[2rem] bg-white p-8 shadow-bento transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] border border-neutral-100 hover:shadow-bento-hover hover:-translate-y-1;
+    @apply dark:bg-neutral-900 dark:border-neutral-800 dark:shadow-none dark:hover:border-neutral-700;
+  }
+}

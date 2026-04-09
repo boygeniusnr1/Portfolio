@@ -1,0 +1,42 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const projects = await getCollection('projects');
+---
+
+<BaseLayout title="Projects | Creative Developer">
+	<header class="mb-12">
+		<a href="/" class="text-sm font-bold text-neutral-400 uppercase tracking-widest hover:text-brand-primary transition-colors flex items-center gap-2 mb-4 group">
+			<span class="group-hover:-translate-x-1 transition-transform">←</span> Back Home
+		</a>
+		<h1 class="text-5xl md:text-7xl font-extrabold tracking-tighter">Selected <span class="text-neutral-400 dark:text-neutral-500">Works.</span></h1>
+	</header>
+
+	<main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+		{projects.map(project => (
+			<a href={`/projects/${project.id}`} class="bento-card flex flex-col justify-between group h-[320px]">
+				<div class="relative z-10">
+					<div class="flex flex-wrap gap-2 mb-4">
+						{project.data.tags?.map(tag => (
+							<span class="px-2 py-0.5 rounded-full bg-neutral-100 text-[10px] font-bold uppercase tracking-wider text-neutral-500 dark:bg-neutral-800 dark:text-neutral-400">
+								{tag}
+							</span>
+						))}
+					</div>
+					<h2 class="text-3xl font-bold mb-2 group-hover:text-brand-primary transition-colors line-clamp-2">{project.data.title}</h2>
+					<p class="text-neutral-500 text-sm line-clamp-3 dark:text-neutral-400 leading-relaxed">{project.data.description}</p>
+				</div>
+				
+				<div class="flex items-center justify-between pt-6 mt-auto border-t border-neutral-50 dark:border-neutral-800">
+					<span class="text-[10px] font-mono text-neutral-400 uppercase tracking-tighter">
+						{project.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short' })}
+					</span>
+					<div class="w-8 h-8 rounded-full bg-neutral-50 flex items-center justify-center group-hover:bg-brand-primary group-hover:text-white transition-all dark:bg-neutral-800">
+						<span class="text-xs">↗</span>
+					</div>
+				</div>
+			</a>
+		))}
+	</main>
+</BaseLayout>

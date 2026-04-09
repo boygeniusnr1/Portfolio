@@ -1,0 +1,30 @@
+---
+import "../styles/global.css";
+import Toolbar from "../components/Toolbar.astro";
+
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title, description = "Senior Developer & Designer Portfolio" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+	</head>
+	<body class="pt-24 pb-8 px-4 md:px-8 max-w-7xl mx-auto min-h-screen">
+		<Toolbar />
+		<slot />
+	</body>
+</html>
