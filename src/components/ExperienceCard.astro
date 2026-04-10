@@ -1,0 +1,17 @@
+---
+import BentoCard from './BentoCard.astro';
+import { siteConfig } from '../data/site-config';
+
+interface Props {
+  delay?: number;
+}
+
+const { delay = 0 } = Astro.props;
+---
+
+<BentoCard colSpan={2} delay={delay} class="bg-brand-primary text-neutral-400 border-none shadow-lg shadow-brand-primary/20 dark:text-white">
+  <div class="flex flex-col justify-between h-full text-white">
+    <span class="text-4xl md:text-5xl font-extrabold tracking-tighter text-black dark:text-white">{siteConfig.author.experience}</span>
+    <span class="text-[10px] md:text-xs font-bold uppercase tracking-widest opacity-80 text-neutral-400">Years Experience</span>
+  </div>
+</BentoCard>

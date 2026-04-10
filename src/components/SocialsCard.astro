@@ -1,0 +1,21 @@
+---
+import BentoCard from './BentoCard.astro';
+import { siteConfig } from '../data/site-config';
+
+interface Props {
+  delay?: number;
+}
+
+const { delay = 0 } = Astro.props;
+---
+
+<BentoCard colSpan={2} delay={delay} class="justify-center">
+  <h3 class="text-xs font-bold text-neutral-400 uppercase tracking-widest mb-4 dark:text-neutral-500">Connect</h3>
+  <div class="flex gap-3">
+    {siteConfig.socials.map(social => (
+      <a href={social.url} target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-2xl bg-neutral-50 border border-neutral-100 flex items-center justify-center text-neutral-400 hover:text-brand-primary hover:border-brand-primary/20 hover:bg-white transition-all duration-300 shadow-sm dark:bg-neutral-800/50 dark:border-neutral-800 dark:hover:bg-neutral-800 dark:text-neutral-500" title={social.name}>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" set:html={social.icon} />
+      </a>
+    ))}
+  </div>
+</BentoCard>

@@ -1,100 +1,21 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import ProjectsArchiveCard from '../components/ProjectsArchiveCard.astro';
+import ExperienceCard from '../components/ExperienceCard.astro';
+import TechStack from '../components/TechStack.astro';
+import SocialsCard from '../components/SocialsCard.astro';
+import ContactCard from '../components/ContactCard.astro';
+import { siteConfig } from '../data/site-config';
 ---
 
-<BaseLayout title="Portfolio | Creative Developer">
+<BaseLayout title={siteConfig.title}>
 	<main class="bento-grid">
-		<!-- Hero Section -->
-		<section class="bento-card md:col-span-4 md:row-span-2 flex flex-col justify-end">
-			<div class="relative z-10">
-				<span class="inline-block px-3 py-1 rounded-full bg-brand-primary/10 text-brand-primary text-xs font-semibold mb-4 dark:bg-brand-primary/20">
-					Available for projects
-				</span>
-				<h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-4">
-					Building digital <span class="text-neutral-400 dark:text-neutral-500">masterpieces.</span>
-				</h1>
-				<p class="text-lg text-neutral-500 max-w-md dark:text-neutral-400">
-					Senior Developer specializing in high-performance websites, Apple Apps, and 3D design.
-				</p>
-			</div>
-			<div class="absolute inset-0 opacity-[0.03] pointer-events-none dark:opacity-[0.05]" style="background-image: radial-gradient(var(--color-neutral-900) 1px, transparent 1px); background-size: 24px 24px;"></div>
-			<div class="absolute inset-0 opacity-0 pointer-events-none dark:opacity-[0.05]" style="background-image: radial-gradient(var(--color-neutral-100) 1px, transparent 1px); background-size: 24px 24px;"></div>
-		</section>
-
-		<!-- 3D Render Placeholder / Featured Work -->
-		<a href="/projects" class="bento-card md:col-span-2 md:row-span-3 bg-neutral-900 text-white flex items-center justify-center overflow-hidden group dark:bg-neutral-800">
-			<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
-			<div class="z-20 p-8 self-end w-full">
-				<p class="text-sm font-mono text-neutral-400 mb-2 tracking-tighter uppercase">View Work</p>
-				<h2 class="text-2xl font-bold group-hover:text-brand-primary transition-colors">Projects Archive</h2>
-			</div>
-			<div class="absolute inset-0 flex items-center justify-center">
-				<div class="w-48 h-48 bg-brand-primary/20 blur-3xl rounded-full group-hover:scale-125 transition-transform duration-700"></div>
-				<div class="w-32 h-32 border border-white/10 rounded-2xl rotate-45 group-hover:rotate-90 transition-transform duration-700"></div>
-			</div>
-		</a>
-
-		<!-- Experience -->
-		<section class="bento-card md:col-span-2 md:row-span-1 bg-brand-primary text-white border-none shadow-lg shadow-brand-primary/20">
-			<div class="flex flex-col justify-between h-full">
-				<span class="text-5xl font-extrabold tracking-tighter">2+</span>
-				<span class="text-xs font-bold uppercase tracking-widest opacity-80">Years Experience</span>
-			</div>
-		</section>
-
-		<!-- Tech Stack -->
-		<section class="bento-card md:col-span-2 md:row-span-2">
-			<h3 class="text-xs font-bold text-neutral-400 uppercase tracking-widest mb-6 dark:text-neutral-500">Preferred Stack</h3>
-			<div class="grid grid-cols-2 gap-4">
-				{[
-					{ name: 'Astro', icon: '<path d="M8.358 20.162c-1.186-1.07-1.532-3.316-1.038-4.944.856 1.026 2.043 1.352 3.272 1.535 1.897.283 3.76.177 5.522-.678.202-.098.388-.229.608-.36.166.473.209.95.151 1.437-.14 1.185-.738 2.1-1.688 2.794-.38.277-.782.525-1.175.787-1.205.804-1.531 1.747-1.078 3.119l.044.148a3.158 3.158 0 0 1-1.407-1.188 3.31 3.31 0 0 1-.544-1.815c-.004-.32-.004-.642-.048-.958-.106-.769-.472-1.113-1.161-1.133-.707-.02-1.267.411-1.415 1.09-.012.053-.028.104-.045.165h.002zm-5.961-4.445s3.24-1.575 6.49-1.575l2.451-7.565c.092-.366.36-.614.662-.614.302 0 .57.248.662.614l2.45 7.565c3.85 0 6.491 1.575 6.491 1.575L16.088.727C15.93.285 15.663 0 15.303 0H8.697c-.36 0-.615.285-.784.727l-5.516 14.99z"/>' },
-					{ name: 'Tailwind', icon: '<path d="M12.001,4.8c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 C13.666,10.618,15.027,12,18.001,12c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C16.337,6.182,14.976,4.8,12.001,4.8z M6.001,12c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 c1.177,1.194,2.538,2.576,5.512,2.576c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C10.337,13.382,8.976,12,6.001,12z"/>' },
-					{ name: 'Blender', icon: '<path d="M12.51 13.214c.046-.8.438-1.506 1.03-2.006a3.424 3.424 0 0 1 2.212-.79c.85 0 1.631.3 2.211.79.592.5.983 1.206 1.028 2.005.045.823-.285 1.586-.865 2.153a3.389 3.389 0 0 1-2.374.938 3.393 3.393 0 0 1-2.376-.938c-.58-.567-.91-1.33-.865-2.152M7.35 14.831c.006.314.106.922.256 1.398a7.372 7.372 0 0 0 1.593 2.757 8.227 8.227 0 0 0 2.787 2.001 8.947 8.947 0 0 0 3.66.76 8.964 8.964 0 0 0 3.657-.772 8.285 8.285 0 0 0 2.785-2.01 7.428 7.428 0 0 0 1.592-2.762 6.964 6.964 0 0 0 .25-3.074 7.123 7.123 0 0 0-1.016-2.779 7.764 7.764 0 0 0-1.852-2.043h.002L13.566 2.55l-.02-.015c-.492-.378-1.319-.376-1.86.002-.547.382-.609 1.015-.123 1.415l-.001.001 3.126 2.543-9.53.01h-.013c-.788.001-1.545.518-1.695 1.172-.154.665.38 1.217 1.2 1.22V8.9l4.83-.01-8.62 6.617-.034.025c-.813.622-1.075 1.658-.563 2.313.52.667 1.625.668 2.447.004L7.414 14s-.069.52-.063.831zm12.09 1.741c-.97.988-2.326 1.548-3.795 1.55-1.47.004-2.827-.552-3.797-1.538a4.51 4.51 0 0 1-1.036-1.622 4.282 4.282 0 0 1 .282-3.519 4.702 4.702 0 0 1 1.153-1.371c.942-.768 2.141-1.183 3.396-1.185 1.256-.002 2.455.41 3.398 1.175.48.391.87.854 1.152 1.367a4.28 4.28 0 0 1 .522 1.706 4.236 4.236 0 0 1-.239 1.811 4.54 4.54 0 0 1-1.035 1.626"/>' },
-					{ name: 'Fusion', icon: '<path d="M12 2l9 5v10l-9 5-9-5V7l9-5zM12 12l9-5M12 12v10M12 12l-9-5M12 7l9 5-9 5-9-5 9-5z"/>' },
-					{ name: 'Swift', icon: '<path d="M12.122 2.333c-.15 0-.294.004-.44.006a14.37 14.37 0 0 0-4.148.694A10.887 10.887 0 0 0 4.59 4.416a10.885 10.885 0 0 0-3.344 3.344 10.89 10.89 0 0 0-1.383 2.943c-.426 1.428-.616 2.914-.694 4.147-.002.147-.006.29-.006.44s.004.293.006.44c.078 1.233.268 2.719.694 4.147a10.886 10.886 0 0 0 1.383 2.943 10.885 10.885 0 0 0 3.344 3.344 10.887 10.887 0 0 0 2.943 1.383c1.428.426 2.914.616 4.148.694.146.002.29.006.44.006s.294-.004.44-.006c1.233-.078 2.72-.268 4.148-.694a10.887 10.887 0 0 0 2.943-1.383 10.885 10.885 0 0 0 3.344-3.344 10.886 10.886 0 0 0 1.383-2.943c.426-1.428.616-2.914.694-4.147.002-.147.006-.29-.006-.44s-.004-.293-.006-.44c-.078-1.233-.268-2.719-.694-4.147a10.89 10.89 0 0 0-1.383-2.943 10.885 10.885 0 0 0-3.344-3.344 10.887 10.887 0 0 0-2.943-1.383c-1.428-.426-2.915-.616-4.148-.694-.146-.002-.29-.006-.44-.006zm3.303 1.832c3.277 1.956 5.215 5.672 4.417 8.826-.01.074-.03.144-.061.216l.002.001c1.642 2.01.996 4.316.8 4.135-.853-1.651-2.441-1.242-3.256-.826a5.358 5.358 0 0 1-.223.125l-.017.01-.001.001c-1.684.89-3.945.955-6.222-.017A10.01 10.01 0 0 1 6.57 12.8c.518.381 1.076.716 1.67 1 2.404 1.12 4.816 1.037 6.528-.002-3.111-2.316-5.141-4.743-6.699-6.71a8.5 8.5 0 0 1-.801-1.097c1.864 1.698 4.808 3.83 5.865 4.422-2.12-3.153-4.103-6.062-4.01-5.97 3.535 3.548 6.791 5.55 6.791 5.55.123.067.215.123.287.169a3.743 3.743 0 0 1 .178-.53c.563-2.053-.07-4.402-1.507-6.342z"/>' },
-					{ name: 'SwiftUI', icon: '<path d="M11.99 0C5.372 0 0 5.373 0 11.99c0 6.618 5.372 11.99 11.99 11.99 6.618 0 11.99-5.372 11.99-11.99C23.98 5.373 18.608 0 11.99 0zm0 1.25c5.932 0 10.74 4.808 10.74 10.74s-4.808 10.74-10.74 10.74c-5.932 0-10.74-4.808-10.74-10.74s4.808-10.74 10.74-10.74zM6.924 6.945l5.066 3.166 5.066-3.166-5.066-3.166-5.066 3.166zm5.066 14.12l-5.066-3.166V10.3l5.066 3.166 5.066-3.166v7.599l-5.066 3.166z"/>' }
-				].map(tech => (
-					<div class="flex items-center gap-4 p-5 rounded-3xl bg-neutral-50/50 border border-neutral-100 hover:bg-white hover:shadow-bento-hover transition-all duration-500 group dark:bg-neutral-800/30 dark:border-neutral-800 dark:hover:bg-neutral-800">
-						<div class="w-10 h-10 shrink-0 rounded-xl bg-white border border-neutral-100 flex items-center justify-center text-neutral-400 group-hover:text-brand-primary group-hover:scale-110 transition-all shadow-sm dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-500">
-							<svg 
-								xmlns="http://www.w3.org/2000/svg" 
-								width="22" height="22" 
-								viewBox="0 0 24 24" 
-								fill="currentColor" 
-								class="transition-colors"
-								set:html={tech.icon}
-							/>
-						</div>
-						<span class="text-sm font-bold tracking-tight opacity-70 group-hover:opacity-100 transition-opacity">{tech.name}</span>
-					</div>
-				))}
-			</div>
-		</section>
-
-
-		<!-- Connect/Socials -->
-		<section class="bento-card md:col-span-2 md:row-span-1 flex flex-col justify-center">
-			<h3 class="text-xs font-bold text-neutral-400 uppercase tracking-widest mb-4 dark:text-neutral-500">Connect</h3>
-			<div class="flex gap-3">
-				{[
-					{ name: 'GitHub', url: 'https://github.com/boygeniusnr1/', icon: '<path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />' },
-					{ name: 'YouTube', url: 'https://youtube.com/@blendersatisfyingrenders', icon: '<path d="M2 8a4 4 0 0 1 4 -4h12a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-12a4 4 0 0 1 -4 -4v-8z" /><path d="M10 9l5 3l-5 3z" />' },
-				].map(social => (
-					<a href={social.url} target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-2xl bg-neutral-50 border border-neutral-100 flex items-center justify-center text-neutral-400 hover:text-brand-primary hover:border-brand-primary/20 hover:bg-white transition-all duration-300 shadow-sm dark:bg-neutral-800/50 dark:border-neutral-800 dark:hover:bg-neutral-800 dark:text-neutral-500" title={social.name}>
-						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" set:html={social.icon} />
-					</a>
-				))}
-			</div>
-		</section>
-
-		<!-- Social/Contact -->
-		<section class="bento-card md:col-span-2 md:row-span-1 flex items-center justify-center">
-			<a href="/contact" class="w-full h-full flex items-center justify-center gap-2 group">
-				<span class="text-lg font-bold">Get in touch</span>
-				<div class="w-8 h-8 rounded-full bg-neutral-100 flex items-center justify-center group-hover:translate-x-1 transition-transform dark:bg-neutral-800">
-					<span class="text-xs text-neutral-400">↗</span>
-				</div>
-			</a>
-		</section>
+		<Hero delay={100} />
+		<ProjectsArchiveCard delay={200} />
+		<ExperienceCard delay={300} />
+		<TechStack delay={400} />
+		<SocialsCard delay={500} />
+		<ContactCard delay={600} />
 	</main>
 </BaseLayout>

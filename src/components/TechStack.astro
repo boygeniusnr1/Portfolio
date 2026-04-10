@@ -1,0 +1,24 @@
+---
+import BentoCard from './BentoCard.astro';
+import { siteConfig } from '../data/site-config';
+
+interface Props {
+  delay?: number;
+}
+
+const { delay = 0 } = Astro.props;
+---
+
+<BentoCard colSpan={2} rowSpan={2} delay={delay}>
+  <h3 class="text-xs font-bold text-neutral-400 uppercase tracking-widest mb-6 dark:text-neutral-500">Preferred Stack</h3>
+  <div class="grid grid-cols-2 gap-3 md:gap-4">
+    {siteConfig.techStack.map(tech => (
+      <div class="flex items-center gap-3 md:gap-4 p-4 md:p-5 rounded-3xl bg-neutral-50/50 border border-neutral-100 hover:bg-white hover:shadow-bento-hover transition-all duration-500 group dark:bg-neutral-800/30 dark:border-neutral-800 dark:hover:bg-neutral-800">
+        <div class="w-8 h-8 md:w-10 md:h-10 shrink-0 rounded-xl bg-white border border-neutral-100 flex items-center justify-center text-neutral-400 group-hover:text-brand-primary group-hover:scale-110 transition-all shadow-sm dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-500">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" class="transition-colors" set:html={tech.icon} />
+        </div>
+        <span class="text-sm font-bold tracking-tight opacity-70 group-hover:opacity-100 transition-opacity">{tech.name}</span>
+      </div>
+    ))}
+  </div>
+</BentoCard>

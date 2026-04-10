@@ -1,0 +1,41 @@
+---
+interface Props {
+  class?: string;
+  href?: string;
+  rowSpan?: number;
+  colSpan?: number;
+  dark?: boolean;
+  delay?: number; // Animation delay in milliseconds
+}
+
+const { 
+  class: className, 
+  href, 
+  rowSpan = 1, 
+  colSpan = 1,
+  dark = false,
+  delay = 0
+} = Astro.props;
+
+const Element = href ? 'a' : 'section';
+
+// Dynamic span classes for md/lg breakpoints
+const spanClasses = {
+  col: colSpan === 4 ? 'md:col-span-4' : colSpan === 2 ? 'md:col-span-2' : 'md:col-span-1',
+  row: rowSpan === 3 ? 'md:row-span-3' : rowSpan === 2 ? 'md:row-span-2' : 'md:row-span-1'
+};
+---
+
+<Element 
+  href={href} 
+  class:list={[
+    'bento-card group flex flex-col opacity-0',
+    { 'bg-neutral-950 text-white dark:bg-neutral-900 border-none': dark },
+    spanClasses.col,
+    spanClasses.row,
+    className
+  ]}
+  style={`animation: fade-in-up 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards; animation-delay: ${delay}ms;`}
+>
+  <slot />
+</Element>

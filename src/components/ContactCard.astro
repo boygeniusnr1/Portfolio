@@ -1,0 +1,18 @@
+---
+import BentoCard from './BentoCard.astro';
+
+interface Props {
+  delay?: number;
+}
+
+const { delay = 0 } = Astro.props;
+---
+
+<BentoCard colSpan={2} delay={delay} class="items-center justify-center">
+  <a href="/contact" class="w-full h-full flex items-center justify-center gap-2 group">
+    <span class="text-lg font-bold">Get in touch</span>
+    <div class="w-8 h-8 rounded-full bg-neutral-100 flex items-center justify-center group-hover:translate-x-1 transition-transform dark:bg-neutral-800">
+      <span class="text-xs text-neutral-400">↗</span>
+    </div>
+  </a>
+</BentoCard>
