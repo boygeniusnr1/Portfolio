@@ -6,9 +6,10 @@ import Analytics from '@vercel/analytics/astro'
 interface Props {
 	title: string;
 	description?: string;
+	noIndex?: boolean;
 }
 
-const { title, description = "Senior Developer & Designer Portfolio" } = Astro.props;
+const { title, description = "Senior Developer & Designer Portfolio", noIndex = false } = Astro.props;
 ---
 
 <!doctype html>
@@ -21,6 +22,7 @@ const { title, description = "Senior Developer & Designer Portfolio" } = Astro.p
 		<meta name="google-site-verification" content="xpoIA3KqasS1AznofvECpMTEzwbTGEW0YBppyV0AIs0" />
 		<title>{title}</title>
 		<meta name="description" content={description} />
+		{noIndex && <meta name="robots" content="noindex, nofollow" />}
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
